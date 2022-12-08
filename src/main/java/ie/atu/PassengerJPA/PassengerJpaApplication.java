@@ -3,6 +3,7 @@ package ie.atu.PassengerJPA;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,22 +14,23 @@ import java.util.List;
 @RequestMapping(path="api/passenger")
 public class PassengerJpaApplication {
 
+	PassengerService myService;
+
+	public PassengerJpaApplication(PassengerService myService) {
+		this.myService = myService;
+	}
+
 	public static void main(String[] args) {
 		SpringApplication.run(PassengerJpaApplication.class, args);
 	}
 
 	@GetMapping
 	public List<Passenger> getPassengers(){
-		List<Passenger> myPassengers = List.of(
-				new Passenger("Mr", "Patryk", "1234567890", "0853849583", 26),
-				new Passenger("Mr", "David", "12345674534", "0857549583", 23),
-				new Passenger("Mr", "Mike", "1234575466", "0853643483", 60));
-		return myPassengers;
+		return myService.getPassengers();
 	}
 
 	@GetMapping("/{passengerID}")
-	public Passenger getPassenger(String ID){
-		Passenger myPassenger = new Passenger("Mr", "Paddy", "2188726374", "0898872736", 70);
-		return myPassenger;
+	public Passenger getPassenger(@PathVariable String passengerID){
+		return myService.getPassenger(passengerID);
 	}
 }

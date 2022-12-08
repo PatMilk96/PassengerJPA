@@ -1,21 +1,22 @@
 package ie.atu.PassengerJPA;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.Objects;
 
+@AllArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
 public class Passenger {
     private String title;
     private String name;
     private String id;
     private String phone;
     private int age;
-
-    public Passenger(String title, String name, String id, String phone, int age) {
-        this.title = title;
-        this.name = name;
-        this.id = id;
-        this.phone = phone;
-        this.age = age;
-    }
 
     public String getTitle() {
         if(Objects.equals(title, "Mr") || Objects.equals(title, "Mrs") || Objects.equals(title, "Ms")){

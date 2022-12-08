@@ -1,6 +1,8 @@
 package ie.atu.PassengerJPA;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -20,5 +22,10 @@ public class PassengerService {
     public Passenger getPassenger(String passengerID){
         Passenger myPassenger = new Passenger("Mr", "Paddy", "2188726374", "0898872736", 70);
         return myPassenger;
+    }
+
+    @PostMapping("")
+    public void savePassenger(@RequestBody Passenger passenger){
+        passengerRepo.save(passenger);
     }
 }

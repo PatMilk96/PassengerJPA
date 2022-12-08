@@ -1,5 +1,6 @@
 package ie.atu.PassengerJPA;
 
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,16 +8,29 @@ import lombok.Setter;
 
 import java.util.Objects;
 
-@AllArgsConstructor
 @Getter
 @Setter
 @NoArgsConstructor
+@Entity
+@Table
 public class Passenger {
     private String title;
     private String name;
     private String id;
     private String phone;
     private int age;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long count;
+
+    public Passenger(String title, String name, String id, String phone, int age) {
+        this.title = title;
+        this.name = name;
+        this.id = id;
+        this.phone = phone;
+        this.age = age;
+    }
+
 
     public String getTitle() {
         if(Objects.equals(title, "Mr") || Objects.equals(title, "Mrs") || Objects.equals(title, "Ms")){

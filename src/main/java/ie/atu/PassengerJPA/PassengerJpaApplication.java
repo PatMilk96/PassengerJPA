@@ -25,4 +25,10 @@ public class PassengerJpaApplication {
 				new Passenger("Mr", "Mike", "1234575466", "0853643483", 60));
 		return myPassengers;
 	}
+
+	@GetMapping("/{passengerID}")
+	public Passenger getPassenger(String ID){
+		Passenger myPassenger = new Passenger("Mr", "Paddy", "2188726374", "0898872736", 70);
+		return myPassenger;
+	}
 }

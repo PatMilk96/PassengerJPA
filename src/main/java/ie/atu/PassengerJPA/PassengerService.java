@@ -1,19 +1,17 @@
 package ie.atu.PassengerJPA;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
+@AllArgsConstructor
 @Service
 public class PassengerService {
 
     private final PassengerRepo passengerRepo;
-
-    public PassengerService(PassengerRepo passengerRepo) {
-        this.passengerRepo = passengerRepo;
-    }
 
     public List<Passenger> getPassengers(){
         return passengerRepo.findAll();
@@ -23,8 +21,7 @@ public class PassengerService {
         return new Passenger("Mr", "Paddy", "2188726374", "0898872736", 70);
     }
 
-    @PostMapping("")
-    public void savePassenger(@RequestBody Passenger passenger){
+    public void savePassenger(Passenger passenger){
         passengerRepo.save(passenger);
     }
 }

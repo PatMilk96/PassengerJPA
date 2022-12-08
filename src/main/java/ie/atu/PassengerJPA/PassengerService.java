@@ -20,8 +20,7 @@ public class PassengerService {
     }
 
     public Passenger getPassenger(String passengerID){
-        Passenger myPassenger = new Passenger("Mr", "Paddy", "2188726374", "0898872736", 70);
-        return myPassenger;
+        return new Passenger("Mr", "Paddy", "2188726374", "0898872736", 70);
     }
 
     @PostMapping("")

@@ -2,8 +2,10 @@ package ie.atu.PassengerJPA;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -31,5 +33,8 @@ public class PassengerService {
 
     public void deletePassenger(Long count) {
         passengerRepo.deleteById(count);
+    }
+
+    public List<Passenger> findPassengerByAgeRange(int age1, int age2) {return passengerRepo.findPassengerByAge(age1, age2);
     }
 }
